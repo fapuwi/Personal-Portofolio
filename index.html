@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- ==== NAVIGATION ==== -->
+
+    <header class="navbar">
+        <a href="index.html" class="logo">FATHIR</a>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="active">HOME</a>
+            <a href="about.html">ABOUT ME</a>
+            <a href="project.html">PROJECT</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+
+        <button class="theme-toggle" id="theme-toggle">THEME</button>
+    </header>
+
+    <!-- ==== HOME ==== -->
+
+    <main class="home-page">
+
+        <!-- BACKGROUND DECORATION -->
+
+        <div class="background-grid"></div>
+
+        <div class="background-glitch-one"></div>
+        <div class="background-glitch-two"></div>
+
+        <!-- ==== OSU MAIN MENU ==== -->
+
+        <section class="osu-menu">
+
+            <!-- CENTRAL LOGO -->
+
+            <div class="osu-logo-area" id="osuLogo">
+                <div class="osu-ring ring-one"></div>
+                <div class="osu-ring ring-two"></div>
+                <div class="osu-ring ring-three"></div>
+                <div class="osu-logo">
+                    <span>osu!</span>
+                </div>
+            </div>
+
+            <!-- MENU YANG MUNCUL PADA LOGO -->
+
+            <div class="osu-navigation" id="osuNavigation">
+                <a href="project.html" class="osu-button project-button">
+                    <span class="button-number">01</span>
+                    <span class="button-name">PROJECT</span>
+                    <span class="button-arrow">→</span>
+                </a>
+
+                <a href="about.html" class="osu-button about-button">
+                    <span class="button-number">02</span>
+                    <span class="button-name">ABOUT ME</span>
+                    <span class="button-arrow">→</span>
+                </a>
+
+                <a href="contact.html" class="osu-button contact-button">
+                    <span class="button-number">03</span>
+                    <span class="button-name">CONTACT</span>
+                    <span class="button-arrow">→</span>
+                </a>
+            </div>
+
+            <!-- SMAL INSTRUCTION -->
+
+            <p class="osu-instruction">CLICK THE OSU LOGO TO EXPLORE</p>
+        </section>
+
+        <!-- ==== OSU INFORMATION ==== -->
+
+        <section class="osu-info" id="osu-info">
+            <p class="small-label">FATHIR'S PORTOFOLIO</p>
+            <h1>
+                WELCOME TO MY <br>
+                <span>RYTHM.</span>
+            </h1>
+            <p class="home-description">A personal portofolio inspired by games, anime, music, and my journey as an RPL student.</p>
+        </section>
+
+        <!-- ==== MUSIC PLAYER ==== -->
+
+        <section class="music-player">
+            <div class="music-information">
+                <span class="music-status">
+                    NOW PLAYING
+                </span>
+                <strong id="songTitle">I Really Want To Stay At Your House</strong>
+                <span id="songArtist">Rosa Walton & Hallie Coggins</span>
+            </div>
+
+            <!-- PROGRESS -->
+
+            <div class="music-progress">
+                <span class="current-time">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="total-time">4:07</span>
+            </div>
+
+            <!-- CONTROLS -->
+
+            <div class="music-controls">
+                <button>⇆</button>
+                <button>◁</button>
+                <button>❚❚</button>
+                <button>▷</button>
+                <button>↻</button>
+            </div>
+        </section>
+
+        <!-- ==== DECORATIVE DATA ==== -->
+
+        <div class="system-info">
+            <span>SYSTEM // ONLINE</span>
+            <span>RPL // STUDENT</span>
+        </div>
+
+        <div class="version-info">PORTOFOLIO v1.0</div>
+    </main>
+
+    <!-- ==== JAVA SCRIPT ==== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

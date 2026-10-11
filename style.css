@@ -25,28 +25,69 @@ body {
 :root {
     --background: #050706;
     --background-light: #0b0e0c;
+
+    /* Variabel untuk theme toggle */
+    --bg: #050706;
+    --surface: #0b0e0c;
     --primary: #dfff00;
     --secondary: #39ff14;
     --text: #eeeeee;
     --text-muted: #8d938e;
-    --border: rgba(233, 255, 0, 0.35);
+    --border: rgba(223, 255, 0, 0.2);
     --panel: rgba(10, 15, 12, 0.8);
 }
+
 
 /* ==== 3. NAVBAR ==== */
 
 .navbar {
     position: relative;
-    z-index: 10;
-    width: 100%;
-    height: 80px;
+    z-index: 100;
+    width: calc(100% - 48px);
+    min-height: 84px;
+    margin: 12px auto;
+    padding: 12px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    background: rgba(8, 10, 9, 0.88);
+    border: 1px solid rgba(223, 255, 0, 0.12);
+    border-radius: 48px;
+    backdrop-filter: blur(14px);
+    box-sizing: border-box;
+}
+
+/* IDENTITY */
+
+.nav-identity {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.4%;
-    border-bottom: 1px solid rgba(233, 255, 0, 0.35);
-    background: rgba(5, 7, 6, 0.92);
-    backdrop-filter: blur(8px);
+    gap: 13px;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.nav-brand .logo {
+    color: var(--primary);
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.nav-subtitle {
+    color: #858c87;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
 }
 
 /* Logo */
@@ -61,28 +102,94 @@ body {
     text-shadow: 2px 0 var(--secondary), -2px 0 rgba(255, 0, 100, 0.4);
 }
 
-/* NAVIGATION */
+/* NAVIGATION PILL */
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 45px;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.045);
 }
 
 .nav-menu a {
-    position: relative;
-    color: #dddddd;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px;
+    border-radius: 30px;
+    color: #969b97;
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: 0.3 ease;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    transition: color 0.25s ease, background 0.25s ease;
+}
+
+.nav-number {
+    color: var(--primary);
+    font-size: 0.7rem;
+    opacity: 0.8;
 }
 
 .nav-menu a:hover,
-.nav-menu a:active {
+.nav-menu a.active {
+    color: #f2f4f2;
+    background: rgba(255, 255, 255, 0.075);
+}
+
+.nav-menu a:hover .nav-number,
+.nav-menu a.active .nav-number {
     color: var(--primary);
 }
+
+/* RIGHT SIDE */
+
+.nav-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.theme-toggle {
+    width: 94px;
+    min-height: 44px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    border: 1px solid #303531;
+    border-radius: 30px;
+    background: #141715;
+    color: #b5bbb6;
+    cursor: pointer;
+    font-size: 1.15rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theme-toggle span {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.theme-toggle .theme-moon {
+    color: #080909;
+    background: var(--primary);
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(223, 255, 0, 0.12);
+}
+
 
 /* UNDERLINE */
 
@@ -100,6 +207,61 @@ body {
 .nav-menu a:hover::after
 .nav-menu a:active::after {
     width: 100%;
+}
+
+/* ==== | NAVBAR RESPONSIVE | ==== */
+
+@media (max-width: 900px) {
+    .navbar {
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+
+    .nav-menu {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .nav-actions {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .nav-menu a {
+        padding: 11px 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        width: calc(100% - 20px);
+        margin: 8px auto;
+        border-radius: 24px;
+    }
+
+    .nav-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-brand .logo {
+        font-size: 1.15rem;
+    }
+
+    .nav-subtitle {
+        font-size: 0.55rem;
+    }
+
+    .nav-menu a {
+        gap: 5px;
+        padding: 10px 11px;
+        font-size: 0.7rem;
+    }
 }
 
 /* STUDENT INFO */
@@ -956,7 +1118,7 @@ body {
     object-fit: cover;
     object-position: center;
     z-index: 0;
-    opacity: 0.15;
+    opacity: 0.25;
     pointer-events: none;
     display: block;
 }
@@ -1266,15 +1428,13 @@ body {
     position: absolute;
     left: 5%;
     bottom: 5%;
-    width: 520px;
-    min-height: 85px;
-    padding: 12px 18px;
+    width: 390px;
+    padding: 15px 18px;
     display: grid;
-    grid-template-columns: 150px 1fr auto;
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: 18px;
-    box-sizing: border-box;
-    background: rgba(5, 7, 6, 0.9);
+    gap: 12px;
+    background: rgba(5, 7, 6, 0.88);
     border-left: 3px solid var(--primary);
     border-top: 1px solid rgba(223, 255, 0, 0.2);
     backdrop-filter: blur(8px);
@@ -1286,8 +1446,7 @@ body {
 .music-information {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-width: 0;
+    gap: 4px;
 }
 
 .music-status {
@@ -1317,8 +1476,8 @@ body {
 .music-progress {
     display: flex;
     align-items: center;
-    gap: 8px;
-    min-width: 0;
+    gap: 10px;
+    width: 100%;
 }
 
 .current-time,
@@ -1349,32 +1508,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 24px;
+    width: 100%;
 }
 
 .music-controls button {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
     border: none;
     background: transparent;
     color: #858c87;
-    font-size: 0.9rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition:0.2s ease'
 }
 
 .music-controls button:hover {
     color: #dfff00;
     text-shadow: 0 0 8px #dfff00;
+    transform: scale(1.15); 
 }
 
 .music-button.play-pause {
-    height: 32px;
-    width: 32px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid var(--primary);
     color: var(--primary);
 }
@@ -1885,140 +2043,538 @@ body {
 
 /* ===== | CONTACT PAGE | ===== */
 
-/* ==== 66. CONTACTPAGE ==== */
-
-.contact-page {
+.about-contact {
     position: relative;
-    min-height: 100vh;
-    padding: 80px 7% 80%;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    align-items: center;
+    gap: 60px;
+
+    min-height: 550px;
+    padding: 80px 6%;
     overflow: hidden;
-    background: radial-gradient(circle at 80% 20%, rgba(57, 255, 20, 0.06), transparent 30%), #050706;
+
+    background: linear-gradient(rgba(223, 255, 0, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(223, 255, 0, 0.025) 1px, transparent 1px), #080909;
+
+    background-size: 80px 80px;
+    color: #eeeeee;
 }
 
-/* ==== 67. CONTACT BACKGROUND ==== */
-.contact-page .background-grid {
+/* Dekorasi cahaya neon */
+.about-contact::before {
+    content: "";
     position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(223, 255, 0, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(223, 255, 0, 0.025) 1px, transparent 1px);
-    background-size: 50px 50px;
+    right: -100px;
+    bottom: -180px;
+
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+
+    background: rgba(57, 255, 20, 0.08);
+    filter: blur(100px);
     pointer-events: none;
 }
 
-/* ==== 68. CONTACT GLITCH ==== */
-
-.contact-glitch-one {
-    position: absolute;
-    width: 180px;
-    height: 2px;
-    top: 25%;
-    left: 3%;
-    background: var(--primary);
-    opacity: 0.35;
-    pointer-events: none;
-}
-
-.contact-glitch-two {
-    position: absolute;
-    width: 100px;
-    height: 2px;
-    right: 5%;
-    bottom: 30%;
-    background: var(--secondary);
-    opacity: 0.35;
-    pointer-events: none;
-}
-
-/* ==== 69. CONTACT INTRO ==== */
-
-.contact-intro {
+/* KONTEN KIRI */
+.contact-text {
     position: relative;
-    width: min(100%, 1050px);
-    margin: 30px auto 55px;
-    z-index: 2;
+    z-index: 1;
+    max-width: 800px;
 }
 
 .contact-label {
-    margin-bottom: 15px;
+    margin-bottom: 24px;
     color: var(--secondary);
-    font-size: 0.7;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
-.contact-intro h1 {
-    margin: 0;
-    color: #eeeeee;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.9;
-    letter-spacing: -3px;
+.contact-text h2 {
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
 }
 
-.contact-intro h1 span {
-    display: block;
-    color: var(--primary);
-    text-shadow: 3px 0 var(--secondary), -2px 0 rgba(223, 255, 0, 0.25);
-}
+.contact-text > p:not(.contact-label) {
+    max-width: 700px;
+    margin-bottom: 35px;
 
-.contact-description {
-    max-width: 600px;
-    margin-top: 20px;
-    color: #777e79;
-    font-size: 0.75rem;
+    color: #999e9a;
+    font-size: 1.1rem;
     line-height: 1.8;
 }
 
-/* ==== 70. CONTACT CONTENT ==== */
-
-.contact-content {
-    position: relative;
-    width: min(100%, 1050px);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 25px;
-    z-index: 2;
+/* SOCIAL MEDIA LINKS */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
 }
 
-/* ==== 71. CONTACT BOX ==== */
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
 
-.contact-form-box,
-.contact-info-box {
+    padding: 12px 16px;
+    border: 1px solid #303431;
+    border-radius: 40px;
+
+    color: #eeeeee;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.social-links a img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.social-links a span:last-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    background: #202321;
+    color: #eeeeee;
+    font-size: 1rem;
+
+    transition: 0.25s ease;
+}
+
+.social-links a:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.social-links a:hover span:last-child {
+    background: var(--primary);
+    color: #080909;
+}
+
+/* TOMBOL SAY HELLO */
+.say-hello {
     position: relative;
-    padding: 30px;
+    z-index: 1;
+
+    justify-self: center;
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: #dfff00;
+    color: #080909;
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 1.8rem;
+    font-weight: 900;
+
+    box-shadow: 0 0 50px rgba(223, 255, 0, 0.08);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.hello-arrow {
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.35s ease;
+}
+
+.say-hello:hover {
+    transform: scale(1.04);
+    background: #39ff14;
+    box-shadow: 0 0 70px rgba(57, 255, 20, 0.22);
+}
+
+.say-hello:hover .hello-arrow {
+    transform: translate(5px, -5px);
+}
+
+/* DISCORD LINK */
+
+.discord-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: fit-content;
+    min-width: 100%;
     box-sizing: border-box;
-    background: linear-gradient(135deg, rgba(223, 255, 0, 0.035), rgba(5, 7, 6, 0.92));
-    border: 1px solid rgba(223, 255, 0, 0.2);
-    overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 18px;
+    padding: 12px 16px;
+
+    border: 1px solid #303431;
+    border-radius: 40px;
+
+    color: #eeeeee;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-.contact-form-box::before,
-.contact-info-box::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 70px;
-    height: 3px;
+.discord-link img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.discord-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+
+    border-radius: 50%;
+    background: #202321;
+
+    transition: 0.25s ease;
+}
+
+.discord-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.discord-link:hover .discord-arrow {
+    color: #080909;
     background: var(--primary);
 }
 
-.contact-form-box::after,
-.contact-info-box::after {
+/* ==== 66. CONTACT RESPONSIVE ==== */
+
+@media (max-width: 900px) {
+    .about-contact {
+        grid-template-columns: 1fr 230px;
+        gap: 35px;
+        padding: 65px 5%;
+    }
+
+    .say-hello {
+        width: 220px;
+        font-size: 1.4rem;
+    }
+
+    .hello-arrow {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .about-contact {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 40px;
+        padding: 60px 6%;
+    }
+
+    .contact-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .contact-text > p:not(.contact-label) {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-links a {
+        gap: 8px;
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .say-hello {
+        width: 200px;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .social-links a {
+        gap: 7px;
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    .social-links a img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ===== | THEME TOGGLE | ===== */
+
+/* ==== LIGHT MODE ==== */
+
+body.light-mode {
+    --bg: #f0f2eb;
+    --surface: #ffffff;
+    --text: #171a15;
+    --text-muted: #62685f;
+    --primary: #b8df00;
+    --secondary: #278f12;
+    --border: rgba(39, 70, 10, 0.25);
+}
+
+/* ==== GLITCH THEME TRANSITION ==== */
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+body.theme-glitch::before,
+body.theme-glitch::after {
     content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--secondary);
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-.contact-form-box:hover,
-.contact-info-box:hover {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(223, 255, 0, 0.06);
+body.theme-glitch::before {
+    background: var(--primary);
+    opacity: 0.18;
+    animation: glitchFlash 0.35s steps(2, end);
 }
 
-/* ==== 72. BOX HEADER ==== */
+body.theme-glitch::after {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 4px,
+        rgba(57, 255, 20, 0.15) 5px,
+        transparent 7px
+    );
+    animation: glitchScan 0.35s steps(3, end);
+}
+
+@keyframes glitchFlash {
+    0% {
+        transform: translateX(-8px);
+        clip-path: inset(10% 0 65% 0);
+    }
+
+    40% {
+        transform: translateX(8px);
+        clip-path: inset(45% 0 25% 0);
+    }
+
+    70% {
+        transform: translateX(-4px);
+        clip-path: inset(75% 0 5% 0);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes glitchScan {
+    0% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(5px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+
+
+/* ===== GLOBAL THEME COLORS ===== */
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.navbar {
+    background-color: var(--bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Main page backgrounds */
+
+.home-page,
+.project-page,
+.about-page,
+.contact-page {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Common content surfaces */
+
+.project-card,
+.contact-form-box,
+.contact-info-box {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* Keep headings and paragraphs readable */
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p,
+body.light-mode label {
+    color: var(--text);
+}
+
+/* Keep neon accents visible */
+
+body.light-mode .logo,
+body.light-mode .nav-menu a.active,
+body.light-mode .small-label {
+    color: var(--secondary);
+}
+
+
+/* ==== THEME TOGGLE: ALL PAGES ==== */
+
+body.light-mode {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+body.light-mode .home-page,
+body.light-mode .project-page,
+body.light-mode .about-page,
+body.light-mode .contact-page {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* ==== ABOUT ME + CONTACT LIGHT THEME ==== */
+
+body.light-mode .about-page {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Semua bagian di dalam halaman About */
+body.light-mode .about-page .about-container {
+    background: transparent;
+    color: var(--text);
+}
+
+/* Bagian Contact yang menyatu dengan About */
+body.light-mode .about-page .about-contact {
+    background: transparent;
+    color: var(--text);
+}
+
+
+/* ==== THEME TOGGLE ANIMATION ==== */
+
+.theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 64px;
+    height: 34px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-size: 17px;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.theme-toggle .theme-sun {
+    color: var(--primary);
+    transform: translateX(0) rotate(0deg);
+}
+
+.theme-toggle .theme-moon {
+    color: var(--secondary);
+    transform: translateX(0) rotate(0deg);
+}
+
+/* Saat mode terang aktif */
+body.light-mode .theme-toggle .theme-sun {
+    transform: translateX(28px) rotate(180deg);
+}
+
+body.light-mode .theme-toggle .theme-moon {
+    transform: translateX(-28px) rotate(-180deg);
+}
+
+.theme-toggle:hover {
+    box-shadow: 0 0 12px var(--border);
+}
+
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+/* ==== PNG SOCIAL ICONS: LIGHT THEME ==== */
+
+body.light-mode .social-links a img {
+    filter: brightness(0);
+    transition: filter 0.3s ease;
+}
+
+/* ==== CONTACT TEXT: LIGHT THEME ==== */
+
+body.light-mode .social-links a,
+body.light-mode .contact-text,
+body.light-mode .say-hello,
+body.light-mode .discord-link {
+    color: #000000;
+    transition: color 0.3s ease;
+}

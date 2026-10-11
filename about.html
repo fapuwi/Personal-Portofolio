@@ -8,20 +8,46 @@
 </head>
 <body>
     
-    <!-- NAVBAR -->
-     <header class="navbar">
+   <!-- ==== NAVIGATION ==== -->
+
+    <header class="navbar">
+
+        <!-- IDENTITY -->
+
         <a href="index.html" class="logo">
-            FATHIR
+            <div class="nav-brand">
+                <span class="logo">FATHIR</span>
+                <span class="nav-subtitle">RPL STUDENT</span>
+            </div>
         </a>
 
+        <!--NAVIGATION -->
         <nav class="nav-menu">
-            <a href="index.html">HOME</a>
-            <a href="about.html" class="active">ABOUT ME</a>
-            <a href="project.html">PROJECT</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html">
+                <span class="nav-number">01</span>
+                HOME
+            </a>
+
+            <a href="project.html">
+                <span class="nav-number">02</span>
+                PROJECTS
+            </a>
+
+            <a href="about.html" class="active">
+                <span class="nav-number">03</span>
+                ABOUT
+            </a>
         </nav>
 
-        <button class="theme-toggle">THEME</button>
+        <!-- THEME TOGGLE -->
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle"
+                    aria-label="Toggle theme">
+                <span class="theme-sun">☀</span>
+                <span class="theme-moon">☾</span>
+            </button>
+        </div>
+    </header>
 
         <div class="student-info">
             <span>// RPL STUDENT</span>
@@ -173,6 +199,53 @@
               </div>
 
          </section>
+
+         <!-- CONTACT & SOCIAL LINKS -->
+          <section class="about-contact">
+            
+            <div class="contact-text">
+                <p class="contact-label">// GET IN TOUCH</p>
+                <h2>HAS AN IDEA? POUR YOUR IDEA  HERE</h2>
+                <p>
+                    I am a junior web developer, if you have any questions or problems you contact me. 
+                    Even we can have a chit chat on Discord server if you want
+                </p>
+
+                <!-- KODE SOCIAL LINKS DITEMPATKAN DI SINI -->
+                 <div class="social-links">
+                    <a href="https://github.com/fapuwi" target="_blank" rel="noopener noreferrer">
+                        <img src="github.png" alt="GitHub">
+                        <span>GitHub</span>
+                        <span>↗</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/fapuwi103239?rpxt=MTZ0NmxlYXk4cTdhZg==" target="_blank" rel="noopener noreferrer">
+                        <img src="instagram.png" alt="Instagram">
+                        <span>Instagram</span>
+                        <span>↗</span>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@itsviper_pink" target="_blank" rel="noopener noreferrer">
+                        <img src="tiktok.png" alt="TikTok">
+                        <span>TikTok</span>
+                        <span>↗</span>
+                    </a>
+
+                    <a href="https://discord.gg/JJxb9NNSk" target="_blank" rel="noopener noreferrer">
+                        <img src="discord.png" alt="Discord">
+                        <span>Join our Discord</span>
+                        <span>↗</span>
+                    </a>
+                 </div>
+            </div>
+
+            <!-- TOMBOL SAY HELLO -->
+             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fapuwikanesa@gmail.com" target="_blank" rel="noopener noreferrer" class="say-hello">
+                <span>SAY HELLO</span>
+                <span class="hello-arrow">↗</span>
+             </a>
+
+          </section>
 
          <!-- FOOTER DECORATION -->
           <footer class="about-footer">

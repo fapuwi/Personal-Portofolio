@@ -11,16 +11,42 @@
     <!-- ==== NAVIGATION ==== -->
 
     <header class="navbar">
-        <a href="index.html" class="logo">FATHIR</a>
 
+        <!-- IDENTITY -->
+
+        <a href="index.html" class="logo">
+            <div class="nav-brand">
+                <span class="logo">FATHIR</span>
+                <span class="nav-subtitle">RPL STUDENT</span>
+            </div>
+        </a>
+
+        <!--NAVIGATION -->
         <nav class="nav-menu">
-            <a href="index.html" class="active">HOME</a>
-            <a href="about.html">ABOUT ME</a>
-            <a href="project.html">PROJECT</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html" class="active">
+                <span class="nav-number">01</span>
+                HOME
+            </a>
+
+            <a href="project.html">
+                <span class="nav-number">02</span>
+                PROJECTS
+            </a>
+
+            <a href="about.html">
+                <span class="nav-number">03</span>
+                ABOUT
+            </a>
         </nav>
 
-        <button class="theme-toggle" id="theme-toggle">THEME</button>
+        <!-- THEME TOGGLE -->
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle"
+                    aria-label="Toggle theme">
+                <span class="theme-sun">☀</span>
+                <span class="theme-moon">☾</span>
+            </button>
+        </div>
     </header>
 
     <!-- ==== HOME ==== -->
@@ -31,6 +57,11 @@
      <video class="background-video" controls autoplay muted loop playsinline preload="auto">
         <source src="./CyberpunkEdgerunners.mp4" type="video/mp4">
      </video>
+
+    <!-- BACKGROUND MUSIC -->
+     <audio id="backgroundMusic" autoplay preload="auto">
+        <source src="./I-Really-Want-To-Stay-At-Your-House.mp3" type="audio/mpeg">
+     </audio>
 
         <!-- BACKGROUND DECORATION -->
 
@@ -84,7 +115,7 @@
         <!-- ==== OSU INFORMATION ==== -->
 
         <section class="osu-info" id="osu-info">
-            <p class="small-label">FATHIR'S PORTOFOLIO</p>
+            <p class="small-label">// FATHIR'S PORTOFOLIO</p>
             <h1>
                 WELCOME TO MY <br>
                 <span>RYTHM.</span>
@@ -110,17 +141,17 @@
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
-                <span class="total-time">4:07</span>
+                <span class="total-time">4:22</span>
             </div>
 
             <!-- CONTROLS -->
 
             <div class="music-controls">
-                <button>⇆</button>
-                <button>◁</button>
-                <button>❚❚</button>
-                <button>▷</button>
-                <button>↻</button>
+                <button id="shuffleButton" aria-label="Shuffle">⇆</button>
+                <button id="previousButton" aria-label="Previous">◁</button>
+                <button id="playButton" aria-label="Play/Pause">❚❚</button>
+                <button id="nextButton" aria-label="Next">▷</button>
+                <button id="repeatButton" aria-label="Repeat">↻</button>
             </div>
         </section>
 
